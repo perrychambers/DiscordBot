@@ -19,6 +19,7 @@
   "homepage": "https://github.com/perrychambers/DiscordBot#readme",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "dotenv": "^9.0.1"
+    "dotenv": "^9.0.1",
+    "nodemon": "^2.0.7"
   }
 }
