@@ -1,0 +1,24 @@
+{
+  "name": "DiscordBot",
+  "version": "1.0.0",
+  "description": "Discord bot using Discord.js and Discord API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perrychambers/DiscordBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perrychambers/DiscordBot/issues"
+  },
+  "homepage": "https://github.com/perrychambers/DiscordBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^9.0.1"
+  }
+}
