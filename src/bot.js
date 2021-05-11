@@ -21,10 +21,11 @@ channel: set a specific channel to listen to
 Can set up commands like this, may be a better way but
 this works for now.
 */
-
 client.on('message', (message) => {
     console.log(`[${message.author.tag}] : ${message.content}`)
     if(message.content === 'test') {
         message.channel.send('Test response');
     }
 });
+
+// test line to show commit
