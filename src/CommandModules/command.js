@@ -1,7 +1,7 @@
 /**
  * Simple Command Handler for index.js file
  * Method is called as: command(client, 'commandString', (message) => {message.channel.send('whatever)}
- * @Param {commandString: command to be ran by the user}
+ * @Param {commandString: command to be ran by the user}, {Array: includes command string and its aliases}
  */
 
 const { prefix } = require('../config.json')

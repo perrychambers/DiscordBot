@@ -14,10 +14,12 @@ client.login(process.env.BOT_TOKEN)
 client.on('ready', () => {
     console.log(`The bot has been connected with username: ${client.user.username}`);
 
-    command(client, 'ping', (message) => {
+    // this command includes a commandString and an alias
+    command(client, ['ping', 'test'], (message) => {
         message.channel.send('Pong');
     })
 
+    // this command just includes a commandString
     command(client, 'deleteAll', (message) => {
         message.channel.send('Clearing messages.');
     })
