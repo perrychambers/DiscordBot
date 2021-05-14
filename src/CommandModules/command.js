@@ -18,6 +18,8 @@ module.exports = (client, aliases, callback) => {
         aliases.forEach(alias => {
             const command = `${prefix}${alias}`
 
+            // Add a space after command in case someone gets tagged or whatnot
+            // e.g., !test @chet
             if(content.startsWith(`${command }`) || content === command) {
                 console.log(`Running the command ${command}`)
                 callback(message)
