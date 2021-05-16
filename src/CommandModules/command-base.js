@@ -1,5 +1,4 @@
 const { prefix} = require('../config.json')
-const { callback } = require('./add')
 
 const validatePermissions = (permissions => {
     // All of the possible discord permissions
@@ -52,7 +51,8 @@ module.exports = (client, commandOptions) => {
         minArgs = 0,
         maxArgs = null,
         permissions = [],
-        requiredRoles = []
+        requiredRoles = [],
+        callback
     } = commandOptions
 
     // ensure command and its aliases are in an array
@@ -80,6 +80,8 @@ module.exports = (client, commandOptions) => {
                 // a command has been ran
                 // !ADD !Add !add
 
+                console.log(content)
+
                 // check if user has required permissions
                 for (const permission of permissions) {
                     if(!member.hasPermission(permission)) {
@@ -100,7 +102,7 @@ module.exports = (client, commandOptions) => {
 
                 // split on spaces
                 // ['!add', '5', '10']
-                const arguments = content.split(/[ ]+/)
+                const arguments = content.split(/[ ]+/) 
                 
                 // remove command
                 arguments.shift() // remove first element of array
@@ -112,7 +114,7 @@ module.exports = (client, commandOptions) => {
                 }
 
                 // handle the custom command code
-                callback(message, arguments, arguments.join(' '))
+                callback(message, arguments, arguments.join(' '), client)
 
                 return
             }
