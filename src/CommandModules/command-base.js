@@ -80,8 +80,6 @@ module.exports = (client, commandOptions) => {
                 // a command has been ran
                 // !ADD !Add !add
 
-                console.log(content)
-
                 // check if user has required permissions
                 for (const permission of permissions) {
                     if(!member.hasPermission(permission)) {

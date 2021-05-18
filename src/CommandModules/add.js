@@ -5,7 +5,6 @@ module.exports = {
     minArgs: 2,
     maxArgs: 2,
     callback: (message, arguments, text) => {
-        console.log('Inside addition command.')
         const num1 = +arguments[0]
         const num2 = +arguments[1]
 
