@@ -1,6 +1,6 @@
 module.exports = {
     commands: 'weather',
-    expectedArgs: '<cityName>',
+    expectedArgs: '<location',
     permissionError: 'You need admin permissions to run this command.',
     minArgs: 1,
     maxArgs: 1,
