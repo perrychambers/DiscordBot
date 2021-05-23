@@ -2,7 +2,7 @@ require('dotenv').config();
 
 // create an instance of the discord bot for the server
 const Discord = require('discord.js')
-const client = new Discord.Client();
+const client = new Discord.Client({ partials: ["Message", "CHANNEL", "REACTION"]});
 
 const config = require('./config.json')
 const path = require('path')

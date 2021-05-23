@@ -1,9 +1,10 @@
+const Discord = require("discord.js")
+
 const channelId = '844038729966682115'
 const close = '❌'
 let registered = false
 
-
-const registerReact = (client) => {
+const registerReact = (client, ticketEmbed) => {
     if (registered) {
         return
     }
@@ -19,7 +20,7 @@ const registerReact = (client) => {
         console.log('HANDLING REACTION')
         const { message } = reaction
         if(message.channel.id === channelId) {
-            message.delete()
+            message.delete(ticketEmbed)
         }
     })
 }
@@ -32,19 +33,23 @@ module.exports = {
     callback: (userMessage, arguments, text, client) => {
         const {guild, member} = userMessage
 
-        registerReact(client)
+        const ticketEmbed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle('Ticket')
+            .setDescription(`A new support ticket has been created by <@${member.id}>`)
+            .addFields(
+                 {name: 'Description:', value: `${text}`},
+                 {name: 'How to close this ticket:', value: `Click the ${close} icon to close this ticket.`}
+            )
+
+        registerReact(client, ticketEmbed)
 
         const channel = guild.channels.cache.get(channelId)
-        channel.send(`A new ticket has been created by <@${member.id}>
-        
-            "${text}"
-            
-            
-        Click the ${close} icon to close this ticket.`)
+        channel.send(ticketEmbed)
         .then((ticketMessage) => {
             ticketMessage.react(close)
 
-            userMessage.reply('Your ticket has been added.')
+            userMessage.reply('Your support ticket has been added.')
             userMessage.delete()
         })
 
