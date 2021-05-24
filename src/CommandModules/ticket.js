@@ -25,7 +25,6 @@ const registerReact = (client, ticketEmbed) => {
     })
 }
 
-
 module.exports = {
     commands: ['ticket', 'support'],
     minArgs: 1,
