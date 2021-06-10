@@ -1,26 +1,22 @@
-const firstMessage = require('../firstMessage')
+const channelId = '847240305924767744'
+const messageId = '852357745318821928'
+const Discord = require('discord.js')
+
+const gamingEmojiId = '852354989954695169'
+const programmingEmojiId = '852354934849404939'
 
 module.exports = (client) => {
-    const channelId = '842827078722125844'
 
-    const getEmoji = emojiName => client.emojis.cache.find(emoji => emoji.name === key)
+    reactionManager = new Discord.MessageReactionAdd(client, messageId);
 
-    const emojis = {
-        javascript: 'JavaScript',
-        java: 'Java'
-    }
+    console.log(reactionManager.fetch());
 
-    const reactions = []
+    client.on('messageReactionAdd', (reaction, user) => { 
+        if(!user.bot) {
+            if(message.reaction.id === gamingEmojiId) {
+                message.send('gaming')
+            }
+        }
 
-    let emojiText = 'Add a reaction to claim a role\n\n'
-    for (const key in emojis) {
-        const emoji = getEmoji(key)
-        reactions.push(emoji)
-
-        const role = emojis[key]
-        emojiText += `${emoji} = ${role}\n`
-    }
-
-    firstMessage(client, channelId, emojiText, [])
-
+    })
 }

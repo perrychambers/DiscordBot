@@ -7,6 +7,7 @@ const client = new Discord.Client({ partials: ["Message", "CHANNEL", "REACTION"]
 const config = require('./config.json')
 const path = require('path')
 const fs = require('fs')
+const roleClaim = require('./Reactions/roleClaim')
 
 // Register bot using bot token
 client.login(process.env.BOT_TOKEN)
@@ -38,3 +39,4 @@ client.on('ready', () => {
     readCommands('CommandModules')
 
 });
+
