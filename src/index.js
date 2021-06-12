@@ -1,7 +1,7 @@
 require('dotenv').config();
 const {Collection, Client, Discord} = require('discord.js')
 const client = new Client({
-    partials: ["Message", "CHANNEL", "REACTION"]
+    partials: ["MESSAGE", "CHANNEL", "REACTION", "GUILD_MEMBER"]
 });
 
 const config = require('./config.json')
@@ -15,7 +15,15 @@ client.categories = fs.readdirSync('commands/');
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 })
+module.exports = client; 
 
+// Connect to mongoDB database
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb+srv://chambersbot:admin@cluster0.x5qpj.mongodb.net/discord?retryWrites=true&w=majority', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+}).then(console.log('Connected to mongo db.'))
 
 // Sends a message when the client is connected
 client.on('ready', () => {
