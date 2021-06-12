@@ -5,7 +5,11 @@ module.exports = {
     category: 'info',
     description: 'Returns a ping mesage and latency',
 
-
+    /**
+     * @param {*} client 
+     * @param {*} message 
+     * @param {*} args 
+     */
     run : async(client, message, args) => {
         const msg = await message.channel.send('Pinging.')
         const embed = new MessageEmbed()
