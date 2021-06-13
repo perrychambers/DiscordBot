@@ -1,8 +1,11 @@
 require('dotenv').config();
+
 const {Collection, Client, Discord} = require('discord.js')
 const client = new Client({
     partials: ["MESSAGE", "CHANNEL", "REACTION", "GUILD_MEMBER"]
 });
+
+module.exports = client; 
 
 const config = require('./config.json')
 //const path = require('path')
@@ -15,7 +18,8 @@ client.categories = fs.readdirSync('commands/');
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 })
-module.exports = client; 
+
+
 
 // Connect to mongoDB database
 const mongoose = require('mongoose')
@@ -29,29 +33,6 @@ mongoose.connect('mongodb+srv://chambersbot:admin@cluster0.x5qpj.mongodb.net/dis
 client.on('ready', () => {
     client.user.setActivity(`${prefix}help`)
     console.log(`${client.user.username} successfully connected. ✅`)
-    // console.log(`The bot has been connected with username: ${client.user.username}`);
-
-    // const baseFile = 'command-base.js'
-    // const commandBase = require(`./Commands/${baseFile}`)
-
-    // const readCommands = dir => {
-    //     // read all files inside of the CommandModules directory
-    //     const files = fs.readdirSync(path.join(__dirname, dir))
-    
-    //     for(const file of files) {
-    //         const stat = fs.lstatSync(path.join(__dirname, dir, file)) 
-    //         if(stat.isDirectory()) {
-    //             readCommands(path.join(dir, file))
-    //         } else if (file !== baseFile) {
-    //             const option = require(path.join(__dirname, dir, file))
-    //             //console.log(file, option)
-    //             commandBase(client, option)
-    //         }
-    //     }
-        
-    // }
-
-    // readCommands('Commands')
 });
 
 // listen for command messages

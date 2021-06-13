@@ -23,11 +23,11 @@ module.exports = {
                     return `${index + 1}: ${data.Roles[value][1].raw} - ${role}`
                 }).join('\n\n')
 
-            channel.send(new MessageEmbed().setDescription(mapped)).then((msg) => {
+            channel.send(new MessageEmbed().setTitle('Please react to the respective emoji below to gain access to their channels.').setDescription(mapped)).then((msg) => {
                 data.Message = msg.id;
                 data.save();
 
-                const reactions = Object.values(data.Roles).map((val) => val[1].id)
+                const reactions = Object.values(data.Roles).map((val) => val[1].id ?? val[1].raw)
                 reactions.map((emoji) => msg.react(emoji))
             })
         })

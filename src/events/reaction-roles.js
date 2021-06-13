@@ -5,12 +5,13 @@ client.on('messageReactionAdd', async(reaction, user) => {
     if(reaction.message.partial) await reaction.message.fetch();
     if(reaction.partial) await reaction.fetch();
     if(user.bot) return;
-
+    console.log('Reaction added.')
     Schema.findOne({Message: reaction.message.id}, async(err, data) => {
         if(!data) return;
-        if(!Object.keys(data.Roles).includes(reaction.emoji.name))  //check for reaction name
+        if(!Object.keys(data.Roles).includes(reaction.emoji.name)) return; //check for reaction name
 
-        const [ roleid ] = data.Roles[reaction.emoji.name];
+        var [roleid]  = data.Roles[reaction.emoji.name];
+        console.log(roleid)
         reaction.message.guild.members.cache.get(user.id).roles.add(roleid)
 
         user.send('You have obtained a role')
@@ -22,12 +23,12 @@ client.on('messageReactionRemove', async(reaction, user) => {
     if(reaction.message.partial) await reaction.message.fetch();
     if(reaction.partial) await reaction.fetch();
     if(user.bot) return;
-
+    console.log('Reaction removed.')
     Schema.findOne({Message: reaction.message.id}, async(err, data) => {
         if(!data) return;
-        if(!Object.keys(data.Roles).includes(reaction.emoji.name))  //check for reaction name
+        if(!Object.keys(data.Roles).includes(reaction.emoji.name)) return; //check for reaction name
 
-        const [ roleid ] = data.Roles[reaction.emoji.name];
+        var [ roleid ] = data.Roles[reaction.emoji.name];
         reaction.message.guild.members.cache.get(user.id).roles.remove(roleid)
 
         user.send('You have lost a role.')
