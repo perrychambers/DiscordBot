@@ -14,7 +14,7 @@ client.on('messageReactionAdd', async(reaction, user) => {
         console.log(roleid)
         reaction.message.guild.members.cache.get(user.id).roles.add(roleid)
 
-        user.send('You have obtained a role')
+        user.send(`You have gained the role: ${reaction.emoji.name}`)
     })
     
 })
@@ -31,7 +31,7 @@ client.on('messageReactionRemove', async(reaction, user) => {
         var [ roleid ] = data.Roles[reaction.emoji.name];
         reaction.message.guild.members.cache.get(user.id).roles.remove(roleid)
 
-        user.send('You have lost a role.')
+        user.send(`You have lost the role: ${reaction.emoji.name}`)
     })
     
 })
