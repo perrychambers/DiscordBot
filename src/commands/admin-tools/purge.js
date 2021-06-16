@@ -3,6 +3,7 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'clear',
     aliases: ['purge'],
+    description: '(ADMIN COMMAND) Deletes the specified number of messaged to be deleted in the channel the command was ran. (1-99)',
     /** 
      * @param {Client} client 
      * @param {Message} message 
