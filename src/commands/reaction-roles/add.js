@@ -4,6 +4,8 @@ const Schema = require("../../models/reaction-roles")
 
 module.exports = {
     name: 'add',
+    aliases: ['newRole'],
+    description: '(ADMIN COMMAND) Adds a new role to the reaction-roles panel for users to react to and receive rank.',
     /** 
      * @param {Client} client 
      * @param {Message} message 

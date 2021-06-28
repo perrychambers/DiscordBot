@@ -3,6 +3,8 @@ const Schema = require("../../models/reaction-roles")
 
 module.exports = {
     name: 'panel',
+    aliases: ['roles', 'reactionRoles'],
+    desctiption: '(ADMIN COMMANDS) Creates a panel of roles that users can react to to receive a specific role.',
     /** 
      * @param {Client} client 
      * @param {Message} message 
