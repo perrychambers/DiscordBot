@@ -49,6 +49,7 @@ client.on('message', async message => {
     if(command) command.run(client, message, args)
 })
 
+
 // Register bot using bot token
 client.login(process.env.BOT_TOKEN)
 

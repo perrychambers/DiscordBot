@@ -3,6 +3,7 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'clear',
     aliases: ['purge'],
+    description: 'Clears x amount of messages in the channel the command was sent in.',
     /** 
      * @param {Client} client 
      * @param {Message} message 
